@@ -17,13 +17,17 @@
     "prettier": "^3.5.3",
     "tailwindcss": "^3.4.12"
   },
-	  "lint-staged": {
-	    "*.js": [
-	      "prettier --write",
-	      "eslint --fix"
-	    ],
-	    "*.html": [
-	      "prettier --write"
-	    ]
-	  }
-	}
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "caniuse-lite": "^1.0.30001718",
+    "vite": "^6.3.5"
+  }
+}
