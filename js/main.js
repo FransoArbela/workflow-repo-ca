@@ -4,6 +4,7 @@ import { loginFormListener } from "../js/listeners/auth/loginFormListener.js";
 import { logoutButtonListener } from "./listeners/auth/logoutButtonListener.js";
 import { displayVenueList } from "./listeners/venues/displayVenueList.js";
 import { displayVenue } from "./listeners/venues/displayVenue.js";
+import "../css/input.css";
 
 function initializeApp() {
   createMenu();
