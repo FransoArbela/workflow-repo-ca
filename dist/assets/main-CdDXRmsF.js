@@ -59,7 +59,7 @@ function S() {
     r = "//",
     o = (i, l) => {
       const a = v(i, t) && l !== "Logo";
-      return `<a href="${i}/${r}" class="${a ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${a ? "font-bold" : ""}">${l}</a>`;
+      return `<a href="${i}" class="${a ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${a ? "font-bold" : ""}">${l}</a>`;
     };
   let s = o(`${r}login/`, "Login");
   n &&
@@ -76,7 +76,7 @@ function S() {
 
       </div>
       <div class="flex items-center space-x-4">
-      ${o("/", "Home")}
+      ${o(`${r}`, "Home")}
         ${s}
         ${n ? "" : o(`${r}register/`, "Register")}
       </div>
