@@ -40,7 +40,8 @@ jobs:
       - name: Build Vite site
         run: npm run build
         env:
-          VITE_REPO_NAME: workflow-repo-ca
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+          VITE_REPO_NAME: ${{ secrets.VITE_REPO_NAME }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

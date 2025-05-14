@@ -14,6 +14,7 @@ function initializeApp() {
   const path = window.location.pathname;
   console.log(path);
   console.log(base);
+
   const one = 1;
   const two = 2;
   const three = one + two;
