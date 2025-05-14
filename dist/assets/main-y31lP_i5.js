@@ -1,31 +1,31 @@
 (function () {
   const t = document.createElement("link").relList;
   if (t && t.supports && t.supports("modulepreload")) return;
-  for (const r of document.querySelectorAll('link[rel="modulepreload"]')) o(r);
-  new MutationObserver((r) => {
-    for (const s of r)
+  for (const o of document.querySelectorAll('link[rel="modulepreload"]')) r(o);
+  new MutationObserver((o) => {
+    for (const s of o)
       if (s.type === "childList")
         for (const i of s.addedNodes)
-          i.tagName === "LINK" && i.rel === "modulepreload" && o(i);
+          i.tagName === "LINK" && i.rel === "modulepreload" && r(i);
   }).observe(document, { childList: !0, subtree: !0 });
-  function n(r) {
+  function n(o) {
     const s = {};
     return (
-      r.integrity && (s.integrity = r.integrity),
-      r.referrerPolicy && (s.referrerPolicy = r.referrerPolicy),
-      r.crossOrigin === "use-credentials"
+      o.integrity && (s.integrity = o.integrity),
+      o.referrerPolicy && (s.referrerPolicy = o.referrerPolicy),
+      o.crossOrigin === "use-credentials"
         ? (s.credentials = "include")
-        : r.crossOrigin === "anonymous"
+        : o.crossOrigin === "anonymous"
           ? (s.credentials = "omit")
           : (s.credentials = "same-origin"),
       s
     );
   }
-  function o(r) {
-    if (r.ep) return;
-    r.ep = !0;
-    const s = n(r);
-    fetch(r.href, s);
+  function r(o) {
+    if (o.ep) return;
+    o.ep = !0;
+    const s = n(o);
+    fetch(o.href, s);
   }
 })();
 const m = "token",
@@ -56,13 +56,14 @@ function S() {
   const e = document.querySelector("#menu-container"),
     t = window.location.pathname,
     n = y(),
-    o = (s, i) => {
-      const l = b(s, t) && i !== "Logo";
-      return `<a href="${s}" class="${l ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${l ? "font-bold" : ""}">${i}</a>`;
+    r = "//",
+    o = (i, l) => {
+      const a = b(i, t) && l !== "Logo";
+      return `<a href="${i}" class="${a ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${a ? "font-bold" : ""}">${l}</a>`;
     };
-  let r = o("/login/", "Login");
+  let s = o(`${r}login/`, "Login");
   n &&
-    (r = `
+    (s = `
       <span class="text-white mr-4">Hi ${n}</span>
       <button id="logoutButton" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-200">
         Logout
@@ -71,34 +72,34 @@ function S() {
     (e.innerHTML = `
     <nav class="flex justify-between items-center p-4 bg-green-800">
       <div class="flex items-center space-x-4">
-        ${o("/", "Logo")}
+        ${o(`${r}`, "Logo")}
 
       </div>
       <div class="flex items-center space-x-4">
       ${o("/", "Home")}
-        ${r}
-        ${n ? "" : o("/register/", "Register")}
+        ${s}
+        ${n ? "" : o(`${r}register/`, "Register")}
       </div>
     </nav>
   `);
 }
-const u = { apiUrl: "https://api.noroff.dev/api/v1/holidaze/" };
+const d = { apiUrl: "https://api.noroff.dev/api/v1/holidaze/" };
 async function L(e) {
-  const t = `${u.apiUrl}auth/register`,
+  const t = `${d.apiUrl}auth/register`,
     n = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(e),
     },
-    o = await fetch(t, n),
-    r = await o.json();
-  if (!o.ok) throw new Error("Sorry, sign up failed.");
-  return r;
+    r = await fetch(t, n),
+    o = await r.json();
+  if (!r.ok) throw new Error("Sorry, sign up failed.");
+  return o;
 }
 function c(e, t, n) {
-  let o;
-  typeof e == "string" ? (o = document.querySelector(e)) : (o = e);
-  const r = "p-4 mb-4 rounded-lg border";
+  let r;
+  typeof e == "string" ? (r = document.querySelector(e)) : (r = e);
+  const o = "p-4 mb-4 rounded-lg border";
   let s = "";
   switch (t) {
     case "error":
@@ -113,7 +114,7 @@ function c(e, t, n) {
     default:
       s = "bg-gray-100 border-gray-400 text-gray-700";
   }
-  o.innerHTML = `<div class="${r} ${s}" role="alert">${n}</div>`;
+  r.innerHTML = `<div class="${o} ${s}" role="alert">${n}</div>`;
 }
 const x = {
   en: {
@@ -126,10 +127,10 @@ async function $(e) {
   const t = e.target,
     n = document.querySelector("#message-container");
   n.innerHTML = "";
-  const o = new FormData(t),
-    r = Object.fromEntries(o.entries());
+  const r = new FormData(t),
+    o = Object.fromEntries(r.entries());
   try {
-    await L(r), c(n, "success", x.en.registrationSuccess), t.reset();
+    await L(o), c(n, "success", x.en.registrationSuccess), t.reset();
   } catch (s) {
     c(n, "error", s.message);
   }
@@ -140,22 +141,22 @@ function E() {
 }
 async function O(e) {
   var s, i;
-  const t = `${u.apiUrl}auth/login`;
+  const t = `${d.apiUrl}auth/login`;
   console.log("Login URL:", t);
   const n = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(e),
     },
-    o = await fetch(t, n),
-    r = await o.json();
-  if (!o.ok)
+    r = await fetch(t, n),
+    o = await r.json();
+  if (!r.ok)
     throw new Error(
-      ((i = (s = r.errors) == null ? void 0 : s[0]) == null
+      ((i = (s = o.errors) == null ? void 0 : s[0]) == null
         ? void 0
         : i.message) || "Login failed",
     );
-  return r;
+  return o;
 }
 function j(e) {
   return /^[^\s@]+@(stud\.noroff\.no|noroff\.no)$/.test(e);
@@ -175,25 +176,25 @@ async function C(e) {
   e.preventDefault();
   const t = e.target,
     n = document.querySelector("#message-container"),
-    o = t.querySelector("fieldset"),
-    r = t.querySelector('button[type="submit"]');
+    r = t.querySelector("fieldset"),
+    o = t.querySelector('button[type="submit"]');
   n.innerHTML = "";
   const s = new FormData(t),
     i = Object.fromEntries(s.entries()),
     l = T(i.email, i.password);
   if (!l.isValid) {
-    const a = l.errors.map((d) => `<p class="text-red-500">${d}</p>`).join("");
+    const a = l.errors.map((u) => `<p class="text-red-500">${u}</p>`).join("");
     c(n, "error", a);
     return;
   }
-  (o.disabled = !0), (r.textContent = "Logging in...");
+  (r.disabled = !0), (o.textContent = "Logging in...");
   try {
-    const { accessToken: a, ...d } = await O(i);
-    p(a), h(d), (window.location.href = "/");
+    const { accessToken: a, ...u } = await O(i);
+    p(a), h(u), (window.location.href = "/");
   } catch (a) {
     c(n, "error", a.message);
   } finally {
-    (o.disabled = !1), (r.textContent = "Login");
+    (r.disabled = !1), (o.textContent = "Login");
   }
 }
 function F() {
@@ -209,30 +210,30 @@ function N() {
       });
 }
 async function M() {
-  var o, r;
-  const e = `${u.apiUrl}venues`,
+  var r, o;
+  const e = `${d.apiUrl}venues`,
     t = await fetch(e),
     n = await t.json();
   if ((console.log(n), !t.ok))
     throw new Error(
-      ((r = (o = n.errors) == null ? void 0 : o[0]) == null
+      ((o = (r = n.errors) == null ? void 0 : r[0]) == null
         ? void 0
-        : r.message) || "Fetching venues failed",
+        : o.message) || "Fetching venues failed",
     );
   return n;
 }
 function P(e, t) {
   if (t.length === 0) return "<div class='text-center'>No venues found</div>";
-  const n = t.map((o) => k(o));
+  const n = t.map((r) => k(r));
   (e.innerHTML = ""), e.append(...n);
 }
 const k = (e) => {
   const { media: t, id: n } = e,
-    o = document.createElement("a");
-  (o.className = "bg-cover bg-center h-64 rounded-lg shadow-md"),
-    (o.href = `/venue/?id=${n}`);
-  const r = (t == null ? void 0 : t[0]) || "https://placehold.co/400x400";
-  return (o.style.backgroundImage = `url(${r})`), o;
+    r = document.createElement("a");
+  (r.className = "bg-cover bg-center h-64 rounded-lg shadow-md"),
+    (r.href = `/venue/?id=${n}`);
+  const o = (t == null ? void 0 : t[0]) || "https://placehold.co/400x400";
+  return (r.style.backgroundImage = `url(${o})`), r;
 };
 async function H() {
   const e = document.querySelector("#venue-container");
@@ -244,18 +245,18 @@ async function H() {
   }
 }
 async function U(e) {
-  var r, s;
+  var o, s;
   if (!e) throw new Error("No id provided");
-  const t = `${u.apiUrl}venues/${e}`,
+  const t = `${d.apiUrl}venues/${e}`,
     n = await fetch(t),
-    o = await n.json();
-  if ((console.log(o), !n.ok))
+    r = await n.json();
+  if ((console.log(r), !n.ok))
     throw new Error(
-      ((s = (r = o.errors) == null ? void 0 : r[0]) == null
+      ((s = (o = r.errors) == null ? void 0 : o[0]) == null
         ? void 0
         : s.message) || "Fetching venue failed",
     );
-  return o;
+  return r;
 }
 function V(e) {
   const t = document.querySelector("h1");
@@ -279,8 +280,8 @@ async function A() {
   const t = document.querySelector("#venue-container");
   try {
     const n = await U(e),
-      { name: o } = n;
-    V(o), R(o), D(t, n);
+      { name: r } = n;
+    V(r), R(r), D(t, n);
   } catch (n) {
     console.log(n), c(t, "error", n.message);
   }

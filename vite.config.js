@@ -1,13 +1,15 @@
 import { defineConfig } from "vite";
 import { fileURLToPath } from "url";
-import { resolve, dirname } from "path";
+import { dirname, resolve } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const repoName = process.env.VITE_REPO_NAME || "";
+
 export default defineConfig({
   appType: "mpa",
-  base: "/workflow-repo-ca/",
+  base: process.env.NODE_ENV === "production" ? `/${repoName}/` : "/",
   build: {
     rollupOptions: {
       input: {

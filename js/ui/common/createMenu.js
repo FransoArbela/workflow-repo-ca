@@ -5,6 +5,7 @@ export function createMenu() {
   const container = document.querySelector("#menu-container");
   const currentPath = window.location.pathname;
   const username = getUsername();
+  const base = import.meta.env.BASE_URL;
 
   const createNavLink = (href, text) => {
     const isActive = isActivePath(href, currentPath) && text !== "Logo";
@@ -16,7 +17,7 @@ export function createMenu() {
     }">${text}</a>`;
   };
 
-  let authLink = createNavLink("/login/", "Login");
+  let authLink = createNavLink(`${base}login/`, "Login");
 
   if (username) {
     authLink = `
@@ -30,13 +31,13 @@ export function createMenu() {
   container.innerHTML = `
     <nav class="flex justify-between items-center p-4 bg-green-800">
       <div class="flex items-center space-x-4">
-        ${createNavLink("/", "Logo")}
+        ${createNavLink(`${base}`, "Logo")}
 
       </div>
       <div class="flex items-center space-x-4">
       ${createNavLink("/", "Home")}
         ${authLink}
-        ${username ? "" : createNavLink("/register/", "Register")}
+        ${username ? "" : createNavLink(`${base}register/`, "Register")}
       </div>
     </nav>
   `;
