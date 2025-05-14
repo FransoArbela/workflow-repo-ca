@@ -20,7 +20,8 @@
     "globals": "^16.1.0",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.3.5"
   },
   "lint-staged": {
     "*.js": [
@@ -32,7 +33,6 @@
     ]
   },
   "dependencies": {
-    "caniuse-lite": "^1.0.30001718",
-    "vite": "^6.3.5"
+    "caniuse-lite": "^1.0.30001718"
   }
 }
