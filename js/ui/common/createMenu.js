@@ -35,7 +35,7 @@ export function createMenu() {
 
       </div>
       <div class="flex items-center space-x-4">
-      ${createNavLink(`${base}` || "/", "Home")}
+      ${createNavLink(`${base}`, "Home")}
         ${authLink}
         ${username ? "" : createNavLink(`${base}register/`, "Register")}
       </div>
