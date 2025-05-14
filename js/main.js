@@ -16,7 +16,7 @@ function initializeApp() {
   console.log(base);
 
   if (path) {
-    displayVenueList();
+    // displayVenueList();
     console.log(displayVenueList());
     console.log("i work");
   } else if (path.startsWith(`/login`)) {

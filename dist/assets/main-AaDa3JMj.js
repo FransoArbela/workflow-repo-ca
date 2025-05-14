@@ -28,41 +28,41 @@
     fetch(o.href, s);
   }
 })();
-const p = "token",
-  g = "user";
+const m = "token",
+  f = "user";
+function p(e) {
+  g(m, e);
+}
 function y(e) {
-  m(p, e);
+  g(f, e);
 }
-function h(e) {
-  m(g, e);
-}
-function w() {
-  const e = v(g);
+function h() {
+  const e = b(f);
   return e ? e.name : null;
 }
-function b() {
+function w() {
   localStorage.clear();
 }
-function m(e, t) {
+function g(e, t) {
   localStorage.setItem(e, JSON.stringify(t));
 }
-function v(e) {
+function b(e) {
   const t = localStorage.getItem(e);
   return t ? JSON.parse(t) : null;
 }
-const L = (e, t) => {
+const v = (e, t) => {
   const n = "//";
   return e === "/"
     ? t === "/" || t === "/index.html" || t === `${n}/`
     : t.includes(e);
 };
-function S() {
+function L() {
   const e = document.querySelector("#menu-container"),
     t = window.location.pathname,
-    n = w(),
+    n = h(),
     r = "//",
     o = (i, l) => {
-      const a = L(i, t) && l !== "Logo";
+      const a = v(i, t) && l !== "Logo";
       return `<a href="${i}" class="${a ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${a ? "font-bold" : ""}">${l}</a>`;
     };
   let s = o(`${r}login/`, "Login");
@@ -88,7 +88,7 @@ function S() {
   `);
 }
 const d = { apiUrl: "https://api.noroff.dev/api/v1/holidaze/" };
-async function $(e) {
+async function S(e) {
   const t = `${d.apiUrl}auth/register`,
     n = {
       method: "POST",
@@ -120,13 +120,13 @@ function c(e, t, n) {
   }
   r.innerHTML = `<div class="${o} ${s}" role="alert">${n}</div>`;
 }
-const x = {
+const $ = {
   en: {
     registrationSuccess: "Registration successful!",
     invalidationError: "Invalid input",
   },
 };
-async function E(e) {
+async function x(e) {
   e.preventDefault();
   const t = e.target,
     n = document.querySelector("#message-container");
@@ -134,16 +134,16 @@ async function E(e) {
   const r = new FormData(t),
     o = Object.fromEntries(r.entries());
   try {
-    await $(o), c(n, "success", x.en.registrationSuccess), t.reset();
+    await S(o), c(n, "success", $.en.registrationSuccess), t.reset();
   } catch (s) {
     c(n, "error", s.message);
   }
 }
-function O() {
+function E() {
   const e = document.querySelector("#registerForm");
-  e && e.addEventListener("submit", E);
+  e && e.addEventListener("submit", x);
 }
-async function j(e) {
+async function O(e) {
   var s, i;
   const t = `${d.apiUrl}auth/login`;
   console.log("Login URL:", t);
@@ -162,21 +162,21 @@ async function j(e) {
     );
   return o;
 }
-function q(e) {
+function j(e) {
   return /^[^\s@]+@(stud\.noroff\.no|noroff\.no)$/.test(e);
 }
-function C(e) {
+function q(e) {
   return e.length >= 8;
 }
-function T(e, t) {
+function C(e, t) {
   const n = [];
   return (
-    q(e) || n.push("Please enter a noroff.no or stud.noroff.no email address."),
-    C(t) || n.push("Password must be at least 8 characters long."),
+    j(e) || n.push("Please enter a noroff.no or stud.noroff.no email address."),
+    q(t) || n.push("Password must be at least 8 characters long."),
     { isValid: n.length === 0, errors: n }
   );
 }
-async function V(e) {
+async function T(e) {
   e.preventDefault();
   const t = e.target,
     n = document.querySelector("#message-container"),
@@ -185,7 +185,7 @@ async function V(e) {
   n.innerHTML = "";
   const s = new FormData(t),
     i = Object.fromEntries(s.entries()),
-    l = T(i.email, i.password);
+    l = C(i.email, i.password);
   if (!l.isValid) {
     const a = l.errors.map((u) => `<p class="text-red-500">${u}</p>`).join("");
     c(n, "error", a);
@@ -193,28 +193,28 @@ async function V(e) {
   }
   (r.disabled = !0), (o.textContent = "Logging in...");
   try {
-    const { accessToken: a, ...u } = await j(i);
-    y(a), h(u), (window.location.href = "/");
+    const { accessToken: a, ...u } = await O(i);
+    p(a), y(u), (window.location.href = "/");
   } catch (a) {
     c(n, "error", a.message);
   } finally {
     (r.disabled = !1), (o.textContent = "Login");
   }
 }
-function F() {
+function V() {
   const e = document.querySelector("#loginForm");
-  e && e.addEventListener("submit", V);
+  e && e.addEventListener("submit", T);
 }
-function N() {
+function F() {
   const e = document.querySelector("#logoutButton");
   console.log(e);
   const t = "//";
   e &&
     e.addEventListener("click", () => {
-      b(), (window.location.href = `${t}login/`);
+      w(), (window.location.href = `${t}login/`);
     });
 }
-async function k() {
+async function N() {
   var r, o;
   const e = `${d.apiUrl}venues`,
     t = await fetch(e),
@@ -227,13 +227,13 @@ async function k() {
     );
   return n;
 }
-function M(e, t) {
+function k(e, t) {
   if (t.length === 0) return "<div class='text-center'>No venues found</div>";
   console.log("renderVenueListtttttttttttttttttttt");
-  const n = t.map((r) => H(r));
+  const n = t.map((r) => M(r));
   console.log("venue Card func", n), (e.innerHTML = ""), e.append(...n);
 }
-const H = (e) => {
+const M = (e) => {
   const { media: t, id: n } = e,
     r = document.createElement("a");
   (r.className = "bg-cover bg-center h-64 rounded-lg shadow-md"),
@@ -241,12 +241,12 @@ const H = (e) => {
   const o = (t == null ? void 0 : t[0]) || "https://placehold.co/400x400";
   return (r.style.backgroundImage = `url(${o})`), r;
 };
-async function f() {
+async function H() {
   const e = document.querySelector("#venue-container");
   console.log("displayVenuesList");
   try {
-    const t = await k();
-    console.log("venues from displayVenuesList", t), M(e, t);
+    const t = await N();
+    console.log("venues from displayVenuesList", t), k(e, t);
   } catch (t) {
     console.log(t), c(e, "error", t.message);
   }
@@ -295,16 +295,16 @@ async function A() {
 }
 function B() {
   const e = "//";
-  S(), N();
+  L(), F();
   const t = window.location.pathname;
   console.log(t),
     console.log(e),
     t
-      ? (f(), console.log(f()), console.log("i work"))
+      ? (console.log(H()), console.log("i work"))
       : t.startsWith("/login")
-        ? F()
+        ? V()
         : t.startsWith("/register")
-          ? O()
+          ? E()
           : t.startsWith("/venue/") && A();
 }
 B();
