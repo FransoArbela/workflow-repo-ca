@@ -14,8 +14,10 @@ function initializeApp() {
   const path = window.location.pathname;
   console.log(path);
   console.log(base);
-
-  if (path) {
+  const one = 1;
+  const two = 2;
+  const three = one + two;
+  if (three === 3) {
     // displayVenueList();
     console.log(displayVenueList());
     console.log("i work");
