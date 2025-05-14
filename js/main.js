@@ -17,6 +17,7 @@ function initializeApp() {
 
   if (path === `workflow-repo-ca/`) {
     displayVenueList();
+    console.log(displayVenueList());
   } else if (path.startsWith(`/login`)) {
     loginFormListener();
   } else if (path.startsWith(`/register`)) {
