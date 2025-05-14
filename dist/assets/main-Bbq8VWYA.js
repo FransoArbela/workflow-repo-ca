@@ -292,7 +292,7 @@ function B() {
   S(), N();
   const t = window.location.pathname;
   console.log(t),
-    t === "/" || t === "/index.html" || t === e
+    t === "/" || t === "/index.html" || t === `${e}/`
       ? H()
       : t.startsWith("/login")
         ? F()

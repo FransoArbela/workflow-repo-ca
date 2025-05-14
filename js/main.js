@@ -14,7 +14,7 @@ function initializeApp() {
   const path = window.location.pathname;
   console.log(path);
 
-  if (path === "/" || path === "/index.html" || path === base) {
+  if (path === "/" || path === "/index.html" || path === `${base}/`) {
     displayVenueList();
   } else if (path.startsWith("/login")) {
     loginFormListener();
