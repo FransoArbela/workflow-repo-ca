@@ -17,6 +17,5 @@ export async function login(user) {
   if (!response.ok) {
     throw new Error(json.errors?.[0]?.message || "Login failed");
   }
-
   return json;
 }

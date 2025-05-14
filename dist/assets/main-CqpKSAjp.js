@@ -28,41 +28,41 @@
     fetch(o.href, s);
   }
 })();
-const m = "token",
-  f = "user";
-function p(e) {
-  g(m, e);
-}
+const p = "token",
+  g = "user";
 function h(e) {
-  g(f, e);
+  m(p, e);
 }
-function y() {
-  const e = b(f);
-  return e ? e.name : null;
+function y(e) {
+  m(g, e);
 }
 function w() {
+  const e = v(g);
+  return e ? e.name : null;
+}
+function b() {
   localStorage.clear();
 }
-function g(e, t) {
+function m(e, t) {
   localStorage.setItem(e, JSON.stringify(t));
 }
-function b(e) {
+function v(e) {
   const t = localStorage.getItem(e);
   return t ? JSON.parse(t) : null;
 }
-const v = (e, t) => {
+const S = (e, t) => {
   const n = "//";
   return e === "/"
     ? t === "/" || t === "/index.html" || t === `${n}/`
     : t.includes(e);
 };
-function S() {
+function L() {
   const e = document.querySelector("#menu-container"),
     t = window.location.pathname,
-    n = y(),
+    n = w(),
     r = "//",
     o = (i, l) => {
-      const a = v(i, t) && l !== "Logo";
+      const a = S(i, t) && l !== "Logo";
       return `<a href="${i}" class="${a ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${a ? "font-bold" : ""}">${l}</a>`;
     };
   let s = o(`${r}login/`, "Login");
@@ -88,7 +88,7 @@ function S() {
   `);
 }
 const d = { apiUrl: "https://api.noroff.dev/api/v1/holidaze/" };
-async function L(e) {
+async function $(e) {
   const t = `${d.apiUrl}auth/register`,
     n = {
       method: "POST",
@@ -120,13 +120,13 @@ function c(e, t, n) {
   }
   r.innerHTML = `<div class="${o} ${s}" role="alert">${n}</div>`;
 }
-const $ = {
+const x = {
   en: {
     registrationSuccess: "Registration successful!",
     invalidationError: "Invalid input",
   },
 };
-async function x(e) {
+async function E(e) {
   e.preventDefault();
   const t = e.target,
     n = document.querySelector("#message-container");
@@ -134,16 +134,16 @@ async function x(e) {
   const r = new FormData(t),
     o = Object.fromEntries(r.entries());
   try {
-    await L(o), c(n, "success", $.en.registrationSuccess), t.reset();
+    await $(o), c(n, "success", x.en.registrationSuccess), t.reset();
   } catch (s) {
     c(n, "error", s.message);
   }
 }
-function E() {
+function O() {
   const e = document.querySelector("#registerForm");
-  e && e.addEventListener("submit", x);
+  e && e.addEventListener("submit", E);
 }
-async function O(e) {
+async function j(e) {
   var s, i;
   const t = `${d.apiUrl}auth/login`;
   console.log("Login URL:", t);
@@ -162,21 +162,21 @@ async function O(e) {
     );
   return o;
 }
-function j(e) {
+function q(e) {
   return /^[^\s@]+@(stud\.noroff\.no|noroff\.no)$/.test(e);
 }
-function q(e) {
+function C(e) {
   return e.length >= 8;
 }
 function T(e, t) {
   const n = [];
   return (
-    j(e) || n.push("Please enter a noroff.no or stud.noroff.no email address."),
-    q(t) || n.push("Password must be at least 8 characters long."),
+    q(e) || n.push("Please enter a noroff.no or stud.noroff.no email address."),
+    C(t) || n.push("Password must be at least 8 characters long."),
     { isValid: n.length === 0, errors: n }
   );
 }
-async function C(e) {
+async function F(e) {
   e.preventDefault();
   const t = e.target,
     n = document.querySelector("#message-container"),
@@ -193,28 +193,28 @@ async function C(e) {
   }
   (r.disabled = !0), (o.textContent = "Logging in...");
   try {
-    const { accessToken: a, ...u } = await O(i);
-    p(a), h(u), (window.location.href = "/");
+    const { accessToken: a, ...u } = await j(i);
+    h(a), y(u), (window.location.href = "/");
   } catch (a) {
     c(n, "error", a.message);
   } finally {
     (r.disabled = !1), (o.textContent = "Login");
   }
 }
-function F() {
-  const e = document.querySelector("#loginForm");
-  e && e.addEventListener("submit", C);
-}
 function N() {
+  const e = document.querySelector("#loginForm");
+  e && e.addEventListener("submit", F);
+}
+function M() {
   const e = document.querySelector("#logoutButton");
   console.log(e);
   const t = "//";
   e &&
     e.addEventListener("click", () => {
-      w(), (window.location.href = `${t}login/`);
+      b(), (window.location.href = `${t}login/`);
     });
 }
-async function M() {
+async function V() {
   var r, o;
   const e = `${d.apiUrl}venues`,
     t = await fetch(e),
@@ -227,12 +227,12 @@ async function M() {
     );
   return n;
 }
-function k(e, t) {
+function f(e, t) {
   if (t.length === 0) return "<div class='text-center'>No venues found</div>";
-  const n = t.map((r) => H(r));
+  const n = t.map((r) => console.log("venue Card func", k(r)));
   (e.innerHTML = ""), e.append(...n);
 }
-const H = (e) => {
+const k = (e) => {
   const { media: t, id: n } = e,
     r = document.createElement("a");
   (r.className = "bg-cover bg-center h-64 rounded-lg shadow-md"),
@@ -240,16 +240,18 @@ const H = (e) => {
   const o = (t == null ? void 0 : t[0]) || "https://placehold.co/400x400";
   return (r.style.backgroundImage = `url(${o})`), r;
 };
-async function P() {
+async function H() {
   const e = document.querySelector("#venue-container");
   try {
-    const t = await M();
-    k(e, t);
+    const t = await V();
+    console.log("venues from displayVenuesList", t),
+      f(e, t),
+      console.log(f(e, t));
   } catch (t) {
     console.log(t), c(e, "error", t.message);
   }
 }
-async function U(e) {
+async function P(e) {
   var o, s;
   if (!e) throw new Error("No id provided");
   const t = `${d.apiUrl}venues/${e}`,
@@ -263,7 +265,7 @@ async function U(e) {
     );
   return r;
 }
-function V(e) {
+function U(e) {
   const t = document.querySelector("h1");
   t && (t.textContent = `Venue details: ${e}`);
 }
@@ -284,25 +286,25 @@ async function A() {
   e || (window.location.href = "/");
   const t = document.querySelector("#venue-container");
   try {
-    const n = await U(e),
+    const n = await P(e),
       { name: r } = n;
-    V(r), R(r), D(t, n);
+    U(r), R(r), D(t, n);
   } catch (n) {
     console.log(n), c(t, "error", n.message);
   }
 }
 function B() {
   const e = "//";
-  S(), N();
+  L(), M();
   const t = window.location.pathname;
   console.log(t),
     console.log(e),
-    t === "/" || t === "/index.html" || t === `${e}/`
-      ? P()
+    t === "/" || t === "/index.html" || t === `${e}`
+      ? H()
       : t.startsWith("/login")
-        ? F()
+        ? N()
         : t.startsWith("/register")
-          ? E()
+          ? O()
           : t.startsWith("/venue/") && A();
 }
 B();

@@ -3,7 +3,9 @@ export function renderVenueList(container, venues) {
     return "<div class='text-center'>No venues found</div>";
   }
 
-  const venueElements = venues.map((venue) => createVenueCard(venue));
+  const venueElements = venues.map((venue) =>
+    console.log("venue Card func", createVenueCard(venue)),
+  );
   container.innerHTML = "";
   container.append(...venueElements);
 }
