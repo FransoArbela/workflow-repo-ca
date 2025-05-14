@@ -299,7 +299,7 @@ function B() {
     console.log(e),
     t === "/" || t === "/index.html" || t === `${e}/`
       ? P()
-      : t.startsWith(`${e}/login`)
+      : t.startsWith("/login")
         ? F()
         : t.startsWith("/register")
           ? E()
