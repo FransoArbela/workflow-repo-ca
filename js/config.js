@@ -1,3 +1,3 @@
 export const CONFIG = {
-  apiUrl: "https://api.noroff.dev/api/v1/holidaze/",
+  apiUrl: import.meta.env.VITE_API_URL,
 };
