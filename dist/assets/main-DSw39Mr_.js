@@ -59,7 +59,7 @@ function S() {
     r = "//",
     o = (i, l) => {
       const a = v(i, t) && l !== "Logo";
-      return `<a href="${i}" class="${a ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${a ? "font-bold" : ""}">${l}</a>`;
+      return `<a href="${i}/${r}" class="${a ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${a ? "font-bold" : ""}">${l}</a>`;
     };
   let s = o(`${r}login/`, "Login");
   n &&
@@ -288,15 +288,16 @@ async function A() {
   }
 }
 function B() {
+  const e = "//";
   S(), N();
-  const e = window.location.pathname;
-  console.log(e),
-    e === "/" || e === "/index.html"
+  const t = window.location.pathname;
+  console.log(t),
+    t === "/" || t === "/index.html" || t === e
       ? H()
-      : e.startsWith("/login")
+      : t.startsWith("/login")
         ? F()
-        : e.startsWith("/register")
+        : t.startsWith("/register")
           ? E()
-          : e.startsWith("/venue/") && A();
+          : t.startsWith("/venue/") && A();
 }
 B();

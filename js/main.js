@@ -7,13 +7,14 @@ import { displayVenue } from "./listeners/venues/displayVenue.js";
 import "../css/input.css";
 
 function initializeApp() {
+  const base = import.meta.env.BASE_URL;
   createMenu();
   logoutButtonListener();
 
   const path = window.location.pathname;
   console.log(path);
 
-  if (path === "/" || path === "/index.html") {
+  if (path === "/" || path === "/index.html" || path === base) {
     displayVenueList();
   } else if (path.startsWith("/login")) {
     loginFormListener();
