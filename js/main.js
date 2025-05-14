@@ -15,10 +15,10 @@ function initializeApp() {
   console.log(path);
   console.log(base);
 
-  if (path === `/workflow-repo-ca/`) {
+  if (path) {
     displayVenueList();
     console.log(displayVenueList());
-    console.log("no?");
+    console.log("i work");
   } else if (path.startsWith(`/login`)) {
     loginFormListener();
   } else if (path.startsWith(`/register`)) {

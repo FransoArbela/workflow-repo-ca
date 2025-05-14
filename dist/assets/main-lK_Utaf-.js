@@ -299,8 +299,8 @@ function B() {
   const t = window.location.pathname;
   console.log(t),
     console.log(e),
-    t === "/workflow-repo-ca/"
-      ? (f(), console.log(f()), console.log("no?"))
+    t
+      ? (f(), console.log(f()), console.log("i work"))
       : t.startsWith("/login")
         ? F()
         : t.startsWith("/register")
