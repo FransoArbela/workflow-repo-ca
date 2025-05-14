@@ -300,7 +300,7 @@ function B() {
   console.log(t),
     console.log(e),
     t === "workflow-repo-ca/"
-      ? (f(), console.log(f()))
+      ? (f(), console.log(f()), console.log("no?"))
       : t.startsWith("/login")
         ? F()
         : t.startsWith("/register")
