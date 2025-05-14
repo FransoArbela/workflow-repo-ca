@@ -7,6 +7,7 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   appType: "mpa",
+  base: "/workflow-repo-ca/",
   build: {
     rollupOptions: {
       input: {
