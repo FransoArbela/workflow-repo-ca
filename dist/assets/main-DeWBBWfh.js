@@ -50,8 +50,12 @@ function b(e) {
   const t = localStorage.getItem(e);
   return t ? JSON.parse(t) : null;
 }
-const v = (e, t) =>
-  e === "/" ? t === "/" || t === "/index.html" : t.includes(e);
+const v = (e, t) => {
+  const n = "//";
+  return e === "/"
+    ? t === "/" || t === "/index.html" || t === `${n}/`
+    : t.includes(e);
+};
 function S() {
   const e = document.querySelector("#menu-container"),
     t = window.location.pathname,
@@ -223,12 +227,12 @@ async function M() {
     );
   return n;
 }
-function P(e, t) {
+function k(e, t) {
   if (t.length === 0) return "<div class='text-center'>No venues found</div>";
-  const n = t.map((r) => k(r));
+  const n = t.map((r) => H(r));
   (e.innerHTML = ""), e.append(...n);
 }
-const k = (e) => {
+const H = (e) => {
   const { media: t, id: n } = e,
     r = document.createElement("a");
   (r.className = "bg-cover bg-center h-64 rounded-lg shadow-md"),
@@ -236,11 +240,11 @@ const k = (e) => {
   const o = (t == null ? void 0 : t[0]) || "https://placehold.co/400x400";
   return (r.style.backgroundImage = `url(${o})`), r;
 };
-async function H() {
+async function P() {
   const e = document.querySelector("#venue-container");
   try {
     const t = await M();
-    P(e, t);
+    k(e, t);
   } catch (t) {
     console.log(t), c(e, "error", t.message);
   }
@@ -292,9 +296,10 @@ function B() {
   S(), N();
   const t = window.location.pathname;
   console.log(t),
+    console.log(e),
     t === "/" || t === "/index.html" || t === `${e}/`
-      ? H()
-      : t.startsWith("/login")
+      ? P()
+      : t.startsWith(`${e}/login`)
         ? F()
         : t.startsWith("/register")
           ? E()
