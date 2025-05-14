@@ -37,7 +37,7 @@ function h(e) {
   g(f, e);
 }
 function y() {
-  const e = v(f);
+  const e = b(f);
   return e ? e.name : null;
 }
 function w() {
@@ -46,11 +46,11 @@ function w() {
 function g(e, t) {
   localStorage.setItem(e, JSON.stringify(t));
 }
-function v(e) {
+function b(e) {
   const t = localStorage.getItem(e);
   return t ? JSON.parse(t) : null;
 }
-const b = (e, t) =>
+const v = (e, t) =>
   e === "/" ? t === "/" || t === "/index.html" : t.includes(e);
 function S() {
   const e = document.querySelector("#menu-container"),
@@ -58,7 +58,7 @@ function S() {
     n = y(),
     r = "//",
     o = (i, l) => {
-      const a = b(i, t) && l !== "Logo";
+      const a = v(i, t) && l !== "Logo";
       return `<a href="${i}" class="${a ? "text-blue-300" : "text-white hover:text-blue-200"} py-2 px-3 font-medium transition-colors duration-200 ${a ? "font-bold" : ""}">${l}</a>`;
     };
   let s = o(`${r}login/`, "Login");
@@ -116,13 +116,13 @@ function c(e, t, n) {
   }
   r.innerHTML = `<div class="${o} ${s}" role="alert">${n}</div>`;
 }
-const x = {
+const $ = {
   en: {
     registrationSuccess: "Registration successful!",
     invalidationError: "Invalid input",
   },
 };
-async function $(e) {
+async function x(e) {
   e.preventDefault();
   const t = e.target,
     n = document.querySelector("#message-container");
@@ -130,14 +130,14 @@ async function $(e) {
   const r = new FormData(t),
     o = Object.fromEntries(r.entries());
   try {
-    await L(o), c(n, "success", x.en.registrationSuccess), t.reset();
+    await L(o), c(n, "success", $.en.registrationSuccess), t.reset();
   } catch (s) {
     c(n, "error", s.message);
   }
 }
 function E() {
   const e = document.querySelector("#registerForm");
-  e && e.addEventListener("submit", $);
+  e && e.addEventListener("submit", x);
 }
 async function O(e) {
   var s, i;
@@ -203,11 +203,12 @@ function F() {
 }
 function N() {
   const e = document.querySelector("#logoutButton");
-  console.log(e),
-    e &&
-      e.addEventListener("click", () => {
-        w(), (window.location.href = "/login");
-      });
+  console.log(e);
+  const t = "//";
+  e &&
+    e.addEventListener("click", () => {
+      w(), (window.location.href = `${t}login/`);
+    });
 }
 async function M() {
   var r, o;
