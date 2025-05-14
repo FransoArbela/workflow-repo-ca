@@ -229,8 +229,8 @@ async function V() {
 }
 function f(e, t) {
   if (t.length === 0) return "<div class='text-center'>No venues found</div>";
-  const n = t.map((r) => console.log("venue Card func", k(r)));
-  (e.innerHTML = ""), e.append(...n);
+  const n = t.map((r) => k(r));
+  console.log("venue Card func", n), (e.innerHTML = ""), e.append(...n);
 }
 const k = (e) => {
   const { media: t, id: n } = e,
