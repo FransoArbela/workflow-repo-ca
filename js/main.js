@@ -15,13 +15,8 @@ function initializeApp() {
   console.log(path);
   console.log(base);
 
-  const one = 1;
-  const two = 2;
-  const three = one + two;
-  if (three === 3) {
-    // displayVenueList();
-    console.log(displayVenueList());
-    console.log("i work");
+  if (path === "/" || path === "/index.html" || path === `${base}`) {
+    displayVenueList();
   } else if (path.startsWith(`/login`)) {
     loginFormListener();
   } else if (path.startsWith(`/register`)) {
@@ -32,5 +27,3 @@ function initializeApp() {
 }
 
 initializeApp();
-
-// path === "/" || path === "/index.html" ||
