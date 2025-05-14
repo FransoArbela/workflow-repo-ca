@@ -2,7 +2,7 @@ export function renderVenueList(container, venues) {
   if (venues.length === 0) {
     return "<div class='text-center'>No venues found</div>";
   }
-
+  console.log("renderVenueListtttttttttttttttttttt");
   const venueElements = venues.map((venue) => createVenueCard(venue));
   console.log("venue Card func", venueElements);
   container.innerHTML = "";

@@ -33,10 +33,10 @@ const m = "token",
 function p(e) {
   g(m, e);
 }
-function h(e) {
+function y(e) {
   g(f, e);
 }
-function y() {
+function h() {
   const e = b(f);
   return e ? e.name : null;
 }
@@ -56,10 +56,10 @@ const v = (e, t) => {
     ? t === "/" || t === "/index.html" || t === `${n}/`
     : t.includes(e);
 };
-function S() {
+function L() {
   const e = document.querySelector("#menu-container"),
     t = window.location.pathname,
-    n = y(),
+    n = h(),
     r = "//",
     o = (i, l) => {
       const a = v(i, t) && l !== "Logo";
@@ -88,7 +88,7 @@ function S() {
   `);
 }
 const d = { apiUrl: "https://api.noroff.dev/api/v1/holidaze/" };
-async function L(e) {
+async function S(e) {
   const t = `${d.apiUrl}auth/register`,
     n = {
       method: "POST",
@@ -134,7 +134,7 @@ async function x(e) {
   const r = new FormData(t),
     o = Object.fromEntries(r.entries());
   try {
-    await L(o), c(n, "success", $.en.registrationSuccess), t.reset();
+    await S(o), c(n, "success", $.en.registrationSuccess), t.reset();
   } catch (s) {
     c(n, "error", s.message);
   }
@@ -194,18 +194,18 @@ async function T(e) {
   (r.disabled = !0), (o.textContent = "Logging in...");
   try {
     const { accessToken: a, ...u } = await O(i);
-    p(a), h(u), (window.location.href = "/");
+    p(a), y(u), (window.location.href = "/");
   } catch (a) {
     c(n, "error", a.message);
   } finally {
     (r.disabled = !1), (o.textContent = "Login");
   }
 }
-function F() {
+function V() {
   const e = document.querySelector("#loginForm");
   e && e.addEventListener("submit", T);
 }
-function N() {
+function F() {
   const e = document.querySelector("#logoutButton");
   console.log(e);
   const t = "//";
@@ -214,7 +214,7 @@ function N() {
       w(), (window.location.href = `${t}login/`);
     });
 }
-async function k() {
+async function N() {
   var r, o;
   const e = `${d.apiUrl}venues`,
     t = await fetch(e),
@@ -227,12 +227,13 @@ async function k() {
     );
   return n;
 }
-function M(e, t) {
+function k(e, t) {
   if (t.length === 0) return "<div class='text-center'>No venues found</div>";
-  const n = t.map((r) => V(r));
+  console.log("renderVenueListtttttttttttttttttttt");
+  const n = t.map((r) => M(r));
   console.log("venue Card func", n), (e.innerHTML = ""), e.append(...n);
 }
-const V = (e) => {
+const M = (e) => {
   const { media: t, id: n } = e,
     r = document.createElement("a");
   (r.className = "bg-cover bg-center h-64 rounded-lg shadow-md"),
@@ -242,9 +243,10 @@ const V = (e) => {
 };
 async function H() {
   const e = document.querySelector("#venue-container");
+  console.log("displayVenuesList");
   try {
-    const t = await k();
-    console.log("venues from displayVenuesList", t), M(e, t);
+    const t = await N();
+    console.log("venues from displayVenuesList", t), k(e, t);
   } catch (t) {
     console.log(t), c(e, "error", t.message);
   }
@@ -293,14 +295,14 @@ async function A() {
 }
 function B() {
   const e = "//";
-  S(), N();
+  L(), F();
   const t = window.location.pathname;
   console.log(t),
     console.log(e),
-    t === "/" || t === "/index.html" || t === "workflow-repo-ca/"
+    t === "workflow-repo-ca/"
       ? H()
       : t.startsWith("/login")
-        ? F()
+        ? V()
         : t.startsWith("/register")
           ? E()
           : t.startsWith("/venue/") && A();

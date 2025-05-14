@@ -15,7 +15,7 @@ function initializeApp() {
   console.log(path);
   console.log(base);
 
-  if (path === "/" || path === "/index.html" || path === `workflow-repo-ca/`) {
+  if (path === `workflow-repo-ca/`) {
     displayVenueList();
   } else if (path.startsWith(`/login`)) {
     loginFormListener();
@@ -27,3 +27,5 @@ function initializeApp() {
 }
 
 initializeApp();
+
+// path === "/" || path === "/index.html" ||
