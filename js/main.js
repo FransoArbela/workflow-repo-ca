@@ -15,7 +15,7 @@ function initializeApp() {
   console.log(path);
   console.log(base);
 
-  if (path === `workflow-repo-ca/`) {
+  if (path === `/workflow-repo-ca/`) {
     displayVenueList();
     console.log(displayVenueList());
     console.log("no?");
