@@ -19,7 +19,7 @@ npm run dev
 ## 🧪 Testing
 Playwright
 ```bash
-npm run test
+ npx playwright test
 ```
 Vitest
 ```bash
