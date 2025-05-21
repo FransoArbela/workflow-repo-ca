@@ -27,9 +27,10 @@ npm run dev
 ```
 
 ## 🧪 Testing
-Playwright
+Run playwright & view the reports
 ```bash
- npx playwright test
+npx playwright test
+npx playwright show-report
 ```
 Vitest
 ```bash
