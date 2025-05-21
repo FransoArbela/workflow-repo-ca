@@ -6,8 +6,8 @@
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+gh repo clone FransoArbela/workflow-repo-ca
+cd workflow-repo-ca
 npm install
 ```
 ## 🛠️ Development
