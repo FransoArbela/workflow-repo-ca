@@ -52,4 +52,5 @@ It'll show a section with the same name, there you can see all the scripts that 
 The project expects the following environment variables in a `.env` file, the variables must be a valid email and password for the playwright test to work:
 
 TEST_USER_EMAIL=
+
 TEST_USER_PASSWORD=
