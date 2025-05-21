@@ -7,7 +7,7 @@ A template repository for managing workflows in CA projects, supporting automate
 - [Installation](#-installation)
 - [Development](#-development)
 - [Testing](#-testing)
-- [View all scripts](#-View all scripts)
+- [View all scripts](#-View-all-scripts)
 
 ---
 
@@ -38,7 +38,7 @@ Vitest
 npx vitest run
 ```
 
-## ℹ️ View all scripts
+## ℹ️ View-all-scripts
 If you right click on the project folder name and check on the "NPM Scripts"...
 ![image](https://github.com/user-attachments/assets/ef0915f7-b4ee-422a-9d77-9bd52f3bb83d)
 
