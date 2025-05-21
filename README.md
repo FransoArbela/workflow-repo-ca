@@ -10,13 +10,13 @@ git clone https://github.com/your-username/your-repo.git
 cd your-repo
 npm install
 ```
-🛠️ Development
+## 🛠️ Development
 
 ```bash
 npm run dev
 ```
 
-🧪 Testing
+## 🧪 Testing
 Playwright
 ```bash
 npm run test
