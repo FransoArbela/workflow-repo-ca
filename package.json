@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "css": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch",
+    "start": "live-server --port=5500",
     "test": "vitest",
     "prepare": "husky install"
   },
@@ -14,8 +15,14 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.27.0",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.21",
+    "@vitest/browser": "^3.1.4",
+    "dotenv": "^16.5.0",
     "eslint": "^9.27.0",
     "globals": "^16.1.0",
+    "jsdom": "^26.1.0",
+    "live-server": "^1.2.0",
     "prettier": "^3.5.3",
     "tailwindcss": "^3.4.17",
     "vitest": "^3.1.4"
@@ -165,6 +172,7 @@
     "type-check": "^0.4.0",
     "uri-js": "^4.4.1",
     "util-deprecate": "^1.0.2",
+    "vite": "^6.3.5",
     "which": "^2.0.2",
     "word-wrap": "^1.2.5",
     "wrap-ansi": "^8.1.0",

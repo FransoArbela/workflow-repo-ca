@@ -14,9 +14,9 @@ function initializeApp() {
 
   if (path === "/" || path === "/index.html") {
     displayVenueList();
-  } else if (path.startsWith("/login")) {
+  } else if (path.startsWith("/login/")) {
     loginFormListener();
-  } else if (path.startsWith("/register")) {
+  } else if (path.startsWith("/register/")) {
     registerFormListener();
   } else if (path.startsWith("/venue/")) {
     displayVenue();

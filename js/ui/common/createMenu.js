@@ -16,7 +16,7 @@ export function createMenu() {
     }">${text}</a>`;
   };
 
-  let authLink = createNavLink("/login", "Login");
+  let authLink = createNavLink("/login/", "Login");
 
   if (username) {
     authLink = `
@@ -36,7 +36,7 @@ export function createMenu() {
       <div class="flex items-center space-x-4">
       ${createNavLink("/", "Home")}
         ${authLink}
-        ${username ? "" : createNavLink("/register", "Register")}
+        ${username ? "" : createNavLink("/register/", "Register")}
       </div>
     </nav>
   `;
