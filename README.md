@@ -4,9 +4,9 @@
 A template repository for managing workflows in CA projects, supporting automated testing and streamlined development.
 
 ## Table of Contents
-- [Installation](#installation)
-- [Development](#development)
-- [Testing](#testing)
+- [Installation](#Installation)
+- [Development](#Development)
+- [Testing](#Testing)
 
 
 ## 📦 Installation
