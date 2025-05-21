@@ -1,13 +1,14 @@
-# Workflow repo for the CA
+# 🚀 Workflow Repo for the CA
 
-## Description 
+## 📖 Description 
 A template repository for managing workflows in CA projects, supporting automated testing and streamlined development.
 
-## Table of Contents
-- [Installation](#Installation)
-- [Development](#Development)
-- [Testing](#Testing)
+## 📚 Table of Contents
+- [Installation](#-installation)
+- [Development](#-development)
+- [Testing](#-testing)
 
+---
 
 ## 📦 Installation
 
@@ -17,19 +18,3 @@ Clone the repo and install dependencies:
 gh repo clone FransoArbela/workflow-repo-ca
 cd workflow-repo-ca
 npm install
-```
-## 🛠️ Development
-
-```bash
-npm run dev
-```
-
-## 🧪 Testing
-Playwright
-```bash
- npx playwright test
-```
-Vitest
-```bash
-npx vitest run
-```
