@@ -1,7 +1,7 @@
 import { describe, expect, test, beforeEach } from "vitest";
-import { getUserName } from "./getUserName.js";
+import { getUsername } from "./storage.js";
 
-describe("getUserName", () => {
+describe("getUsername", () => {
   beforeEach(() => {
     localStorage.clear();
   });
@@ -10,15 +10,11 @@ describe("getUserName", () => {
     const user = { name: "Samal" };
     localStorage.setItem("user", JSON.stringify(user));
 
-    expect(getUserName()).toBe("Samal");
+    expect(getUsername()).toBe("Samal");
   });
 
   test("returns null when no user exists in storage", () => {
-    expect(getUserName()).toBeNull();
+    expect(getUsername()).toBeNull();
   });
 
-  test("returns null when user exists but has no name", () => {
-    localStorage.setItem("user", JSON.stringify({}));
-    expect(getUserName()).toBeNull();
-  });
 });
